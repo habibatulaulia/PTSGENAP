@@ -25,7 +25,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-export async function ambilDafaPembeli() {
+export async function ambilDataPembeli() {
   const refDokumen = collection(db, "pembeli");
   const kueri = query(refDokumen, orderBy("nama"));
   const cuplikanKueri = await getDocs(kueri);
@@ -35,8 +35,8 @@ export async function ambilDafaPembeli() {
     hasil.push({
       id: dok.id, 
       nama: dok.data().nama,
-      harga: dok.data().alamat,
-      stok: dok.data().notlpon,
+      alamat: dok.data().alamat,
+      notlpon: dok.data().notlpon,
     });
   });
   
@@ -51,8 +51,8 @@ export async function tambahDataPembli(nama, alamat, notlpon) {
   try {
     const dokRef = await addDoc(collection(db, 'produk'), {
       nama: nama,
-      harga: alamat,
-      stok: notlpon
+      alamat: alamat,
+      notlpon: notlpon
     });
     console.log('Berhasil menambah Pembeli' + dokRef.id);
   } catch (e) {
