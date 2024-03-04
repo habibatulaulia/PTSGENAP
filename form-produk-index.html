@@ -34,19 +34,19 @@
     </form>
 
     <a href="index.html">Lihat Daftar Pembeli</a>
-    
+
     <script type="module">
-      import { tambah pembeli } from './main.js';
-      
+      import { tambahDaftarPembeli } from './main.js';
+
       let tombolTambah = document.getElementById('tombol-tambah');
       let elemenNamaPembeli = document.getElementById('input-nama');
       let elemenalamat = document.getElementById('input-alamat');
       let elemennotlpon = document.getElementById('input-notlpon');
-      
-      tombolTambah.addEventListener('click', async function (e) {
+
+      tombolTambah.addEventListener('click', async function(e) {
         e.preventDefault();
-        await tambahDataPembli(elemenNamaPembeli.value, elemenAlamat.value, elemenNotlpon.value);
-   //  window.location.href = 'index.html';
+        await tambahDaftarPembeli(elemenNamaPembeli.value, elemenAlamat.value, elemenNotlpon.value);
+          window.location.href = 'index.html';
       });
     </script>
 </body>
