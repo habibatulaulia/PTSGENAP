@@ -48,7 +48,7 @@ export function formatAngka(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
-export async function tambahDaftarPembeli(nama, alamat, notlpon) {
+export async function tambahPembeli(nama, alamat, notlpon) {
   try {
     const dokRef = await addDoc(collection(db, 'pembeli'), {
       nama: nama,
@@ -59,4 +59,19 @@ export async function tambahDaftarPembeli(nama, alamat, notlpon) {
   } catch (e) {
     console.log('Gagal menambah Pembeli' + e);
   }
+}
+
+export async function hapusPembeli(docId, nama, alamat, notlpon) {
+  await updateDoc(doc(db, "pembeli", docId),{
+    nama: nama,
+    alamat: alamat,
+    notlpon: notlpon
+  });
+}
+
+export async function ambilPembeli(docId) {
+  const docRef = await doc(db, "pembeli", docId);
+  const docSnap = await getDoc(docRef);
+  
+  return await docSnap.data();
 }
